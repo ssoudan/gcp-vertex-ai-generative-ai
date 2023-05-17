@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <csr-read-only-do-not-edit/>
 
- - 3 commits contributed to the release.
+ - 4 commits contributed to the release.
  - 1 commit was understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Release gcp-vertex-ai-generative-ai v0.1.0, gcp-vertex-ai-generative-language v0.1.1 ([`abb6a62`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/abb6a621a66eb72aeecb45d464576cdcf5ddbb6c))
     - Release gcp-vertex-ai-generative-ai v0.1.0, gcp-vertex-ai-generative-language v0.1.1 ([`1a79a47`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/1a79a47c00ed01bf5b004e7e5849cb6ae5735657))
     - Adjusting changelogs prior to release of gcp-vertex-ai-generative-ai v0.1.0, gcp-vertex-ai-generative-language v0.1.1 ([`d9f1368`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/d9f13683b0e44a274fa1e736ba2a9140fbcc3968))
     - Moved stuffs around ([`e6c2e6b`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/e6c2e6bd3a4ff625cd3db5545c747418efa0507c))
