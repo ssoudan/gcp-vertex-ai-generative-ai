@@ -1,0 +1,36 @@
+[package]
+name = "gcp-vertex-ai-generative-language"
+version = "0.1.0"
+description = "An async client library for GCP Vertex AI Generative models - Language"
+repository.workspace = true
+license.workspace = true
+publish.workspace = true
+readme = "../README.md"
+keywords.workspace = true
+categories.workspace = true
+edition.workspace = true
+
+[features]
+default = []
+# unstable API - may change in future versions
+unstable = []
+
+[lib]
+doctest = false
+
+[dependencies]
+tonic = { version = "0.9", features = ["tls"] }
+prost = "0.11.9"
+prost-types = "0.11.9"
+tokio = "1.28.1"
+tower-service = "0.3.2"
+futures-util = "0.3.28"
+thiserror = "1.0.40"
+
+[build-dependencies]
+tonic-build = { version = "0.9", features = ["prost"] }
+prost-build = { version = "0.11.9" }
+
+[dev-dependencies]
+insta = { version = "1.29.0", features = ["json"] }
+tokio-test = "0.4.2"

@@ -1,0 +1,7 @@
+target/
+.env
+Dockerfile
+.github/
+.idea/
+.vscode/
+BUILD.sh
