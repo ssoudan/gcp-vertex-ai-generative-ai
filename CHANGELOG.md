@@ -10,6 +10,8 @@ Well not much at this point. It is the start.
 
 ## 0.1.0 (2023-05-17)
 
+<csr-id-60280b48513450f846135475fd273f1fda9ef9e6/>
+
 ### Chore
 
  - <csr-id-60280b48513450f846135475fd273f1fda9ef9e6/> get this thing to be published
