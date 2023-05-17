@@ -1,6 +1,6 @@
 [package]
 name = "gcp-vertex-ai-generative-language"
-version = "0.1.0"
+version = "0.1.1"
 description = "An async client library for GCP Vertex AI Generative models - Language"
 repository.workspace = true
 license.workspace = true
