@@ -12,7 +12,7 @@ edition.workspace = true
 
 [dev-dependencies]
 tokio = { version = "1.28.1", features = ["macros", "rt-multi-thread"] }
-gcp-vertex-ai-generative-language = { path = "./language", version = "0.1.0" }
+gcp-vertex-ai-generative-language = { path = "./language", version = "^0.1.0" }
 
 [workspace]
 members = ["language"]
