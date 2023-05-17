@@ -1,4 +1,4 @@
-# gcp-vertex-ai-generative
+# gcp-vertex-ai-generative-ai
 
 [![Crates.io](https://img.shields.io/crates/v/gcp-vertex-ai-generative-language.svg)](https://crates.io/crates/gcp-vertex-ai-generative-language)
 [![Docs.rs](https://docs.rs/gcp-vertex-ai-generative-language/badge.svg)](https://docs.rs/gcp-vertex-ai-generative-language)
