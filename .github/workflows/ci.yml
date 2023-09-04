@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: arduino/setup-protoc@v1
+        uses: arduino/setup-protoc@v2
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Install Rust toolchain
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: arduino/setup-protoc@v1
+        uses: arduino/setup-protoc@v2
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Install Rust toolchain
