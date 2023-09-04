@@ -20,7 +20,7 @@ doctest = false
 
 [dependencies]
 tonic = { version = "0.9", features = ["tls"] }
-prost = "0.11.9"
+prost = "0.12.0"
 prost-types = "0.11.9"
 tokio = "1.28.1"
 tower-service = "0.3.2"
