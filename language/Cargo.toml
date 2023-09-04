@@ -29,7 +29,7 @@ thiserror = "1.0.40"
 
 [build-dependencies]
 tonic-build = { version = "0.9", features = ["prost"] }
-prost-build = { version = "0.11.9" }
+prost-build = { version = "0.12.0" }
 
 [dev-dependencies]
 insta = { version = "1.29.0", features = ["json"] }
