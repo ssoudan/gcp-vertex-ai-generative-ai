@@ -28,7 +28,7 @@ futures-util = "0.3.28"
 thiserror = "1.0.40"
 
 [build-dependencies]
-tonic-build = { version = "0.9", features = ["prost"] }
+tonic-build = { version = "0.10", features = ["prost"] }
 prost-build = { version = "0.11.9" }
 
 [dev-dependencies]
