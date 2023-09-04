@@ -17,7 +17,7 @@ jobs:
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Ensure that the latest version of Cargo is installed
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
