@@ -11,7 +11,7 @@ categories.workspace = true
 edition.workspace = true
 
 [dev-dependencies]
-tokio = { version = "1.28.1", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.32.0", features = ["macros", "rt-multi-thread"] }
 gcp-vertex-ai-generative-language = { path = "./language", version = "^0.1.1" }
 
 [workspace]
