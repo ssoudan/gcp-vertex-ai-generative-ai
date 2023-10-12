@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.1.2 (2023-10-12)
 
+<csr-id-ab0ad9dc565a876f00b63e2c644b3981b0b66792/>
+<csr-id-8bf1fcff2fbaf189aa35e084347d8ea2c8c542b8/>
+<csr-id-05f15088ff89a84df94db6cfd3f493fa40d97027/>
+
 ### Chore
 
  - <csr-id-ab0ad9dc565a876f00b63e2c644b3981b0b66792/> removed unused deps
@@ -17,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <csr-read-only-do-not-edit/>
 
- - 5 commits contributed to the release over the course of 25 calendar days.
+ - 6 commits contributed to the release over the course of 25 calendar days.
  - 147 days passed between releases.
  - 3 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
@@ -29,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Release gcp-vertex-ai-generative-language v0.1.2 ([`443ca57`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/443ca57cd1b44dbfc34d125fc21ca35ce93bcb91))
     - Merge pull request #10 from ssoudan/updates ([`ff2165b`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/ff2165b299447a26649fa8a8506d45691759ec63))
     - Removed unused deps ([`ab0ad9d`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/ab0ad9dc565a876f00b63e2c644b3981b0b66792))
     - Merge pull request #8 from ssoudan/updates ([`a676940`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/a676940da948c60ed57afc501e0153ddfcf99ec9))
