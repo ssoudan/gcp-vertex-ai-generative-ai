@@ -23,7 +23,7 @@ async fn main() {
                 .to_string(),
             examples: vec![],
             messages: vec![Message {
-                author: "Le Chef".to_string(),
+                author: "LeChef".to_string(), 
                 content: "It's late spring. I want to make an entremet and I'm looking for \
                 surprising pairings. I need suggestions for the base layer, a mousse, \
                 two different inserts and a coulis. Give me a 4 suggestions nicely formatted \
