@@ -26,11 +26,6 @@ if ! command -v cargo > /dev/null 2>&1; then
     exit 1
 fi
 
-if ! command -v docker > /dev/null 2>&1; then
-    echo "${RED}Docker is not installed. Please install it first.${NORMAL}"
-    exit 1
-fi
-
 echo -e "${BLUE}Testing...${NORMAL}"
 cargo test --all --all-features || (echo -e "$RED [Tests failed] $NORMAL" && exit 1)
 
@@ -55,19 +50,11 @@ cargo +nightly fmt --all -- --check || (echo -e "$RED [Format failed] $NORMAL" &
 echo -e "${BLUE}Licensing...${NORMAL}"
 cargo deny check || (echo -e "$RED [License check failed] $NORMAL" && exit 1)
 
-echo -e "${BLUE}Udeps...${NORMAL}"
-cargo +nightly udeps || (echo -e "$RED [Udep failed] $NORMAL" && exit 1)
+echo -e "${BLUE}Machete...${NORMAL}"
+cargo +nightly machete || (echo -e "$RED [Machete failed] $NORMAL" && exit 1)
 
-echo -e "${BLUE}Benchmarking...${NORMAL}"
-cargo criterion --all --features=unstable
-
-if [ -e "Dockerfile" ]; 
-then
-    echo -e "${BLUE}Build containers...${NORMAL}"
-
-    docker build --target gcp-vertex-ai-generative-core -t gcp-vertex-ai-generative-core --build-arg EXTRA_FEATURES="${EXTRA_FEATURES}" . || (echo -e "$RED [Container build failed] $NORMAL" && exit 1)
-
-fi
+# echo -e "${BLUE}Benchmarking...${NORMAL}"
+# cargo criterion --all --features=unstable
 
 echo -e "$GREEN === OK === $NORMAL"
 exit 0

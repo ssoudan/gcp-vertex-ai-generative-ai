@@ -23,8 +23,6 @@ tonic = { version = "0.10", features = ["tls"] }
 prost = "0.12.1"
 prost-types = "0.12.1"
 tokio = "1.32.0"
-tower-service = "0.3.2"
-futures-util = "0.3.28"
 thiserror = "1.0.48"
 
 [build-dependencies]
@@ -34,3 +32,6 @@ prost-build = { version = "0.12.1" }
 [dev-dependencies]
 insta = { version = "1.31.0", features = ["json"] }
 tokio-test = "0.4.3"
+
+[package.metadata.cargo-machete]
+ignored = ["prost", "prost-types"]

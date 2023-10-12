@@ -9,6 +9,7 @@ readme = "./README.md"
 keywords.workspace = true
 categories.workspace = true
 edition.workspace = true
+exclude = ["BUILD.sh", ".devcontainer/", ".idea/", ".github/"]
 
 [dev-dependencies]
 tokio = { version = "1.32.0", features = ["macros", "rt-multi-thread"] }
@@ -21,7 +22,7 @@ members = ["language"]
 version = "0.1.0"
 edition = "2021"
 description = "An async client library for GCP Vertex AI Generative models."
-authors = [ "Sebastien Soudan <sebastien.soudan@gmail.com>" ]
+authors = ["Sebastien Soudan <sebastien.soudan@gmail.com>"]
 repository = "https://github.com/ssoudan/gcp-vertex-ai-generative-ai"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
