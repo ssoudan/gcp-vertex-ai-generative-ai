@@ -43,34 +43,30 @@
           settings.global.excludes = [
             "target/**"
           ];
-      };
+        };
       in
       {
         formatter = treefmt-nix.lib.mkWrapper pkgs treefmtConfig;
 
         devShells.default = pkgs.mkShell {
-          buildInputs =
-            [
-              rust
-            ]
-            ++ (
-              with pkgs;
-              [
-                                protobuf
-                llvmPackages.bintools
-                bashInteractive
-                rust-analyzer
-                rustc
-                cargo-edit
-                cargo-machete
-                cargo-watch
-                cargo-deny
-                cargo-nextest
-                taplo
-                watchexec
-                bacon
-              ]
-            );
+          buildInputs = [
+            rust
+          ]
+          ++ (with pkgs; [
+            protobuf
+            llvmPackages.bintools
+            bashInteractive
+            rust-analyzer
+            rustc
+            cargo-edit
+            cargo-machete
+            cargo-watch
+            cargo-deny
+            cargo-nextest
+            taplo
+            watchexec
+            bacon
+          ]);
           shellHook = ''
             export LIBCLANG_PATH=${pkgs.llvmPackages.libclang.lib}/lib
             export PATH=$PATH:${pkgs.uv}/bin

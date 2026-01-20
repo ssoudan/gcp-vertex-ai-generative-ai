@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,35 +14,41 @@
 
 syntax = "proto3";
 
-package google.ai.generativelanguage.v1beta2;
+package google.ai.generativelanguage.v1;
 
-import "google/ai/generativelanguage/v1beta2/model.proto";
+import "google/ai/generativelanguage/v1/model.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 import "google/api/field_behavior.proto";
 import "google/api/resource.proto";
 
-option go_package = "google.golang.org/genproto/googleapis/ai/generativelanguage/v1beta2;generativelanguage";
+option go_package = "cloud.google.com/go/ai/generativelanguage/apiv1/generativelanguagepb;generativelanguagepb";
 option java_multiple_files = true;
 option java_outer_classname = "ModelServiceProto";
-option java_package = "com.google.ai.generativelanguage.v1beta2";
+option java_package = "com.google.ai.generativelanguage.v1";
 
 // Provides methods for getting metadata information about Generative Models.
 service ModelService {
   option (google.api.default_host) = "generativelanguage.googleapis.com";
 
-  // Gets information about a specific Model.
+  // Gets information about a specific `Model` such as its version number, token
+  // limits,
+  // [parameters](https://ai.google.dev/gemini-api/docs/models/generative-models#model-parameters)
+  // and other metadata. Refer to the [Gemini models
+  // guide](https://ai.google.dev/gemini-api/docs/models/gemini) for detailed
+  // model information.
   rpc GetModel(GetModelRequest) returns (Model) {
     option (google.api.http) = {
-      get: "/v1beta2/{name=models/*}"
+      get: "/v1/{name=models/*}"
     };
     option (google.api.method_signature) = "name";
   }
 
-  // Lists models available through the API.
+  // Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini)
+  // available through the Gemini API.
   rpc ListModels(ListModelsRequest) returns (ListModelsResponse) {
     option (google.api.http) = {
-      get: "/v1beta2/models"
+      get: "/v1/models"
     };
     option (google.api.method_signature) = "page_size,page_token";
   }
@@ -67,8 +73,7 @@ message GetModelRequest {
 message ListModelsRequest {
   // The maximum number of `Models` to return (per page).
   //
-  // The service may return fewer models.
-  // If unspecified, at most 50 models will be returned per page.
+  // If unspecified, 50 models will be returned per page.
   // This method returns at most 1000 models per page, even if you pass a larger
   // page_size.
   int32 page_size = 2;

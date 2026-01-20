@@ -1,7 +1,8 @@
 use crate::common::test_client;
-use crate::google::ai::generativelanguage::v1beta2::{
-    CountMessageTokensRequest, EmbedTextRequest, GenerateMessageRequest, GenerateTextRequest,
-    ListModelsRequest, Message, MessagePrompt, TextPrompt,
+use crate::google::ai::generativelanguage::v1::part::Data;
+use crate::google::ai::generativelanguage::v1::{
+    Content, CountTokensRequest, EmbedContentRequest, GenerateContentRequest, GenerationConfig,
+    ListModelsRequest, Part,
 };
 
 #[tokio::test]
@@ -33,86 +34,53 @@ async fn it_list_models() {
 async fn it_count_tokens() {
     let mut client = test_client().await;
 
-    let req = CountMessageTokensRequest {
-        model: "models/chat-bison-001".to_string(),
-        prompt: Some(MessagePrompt {
-            context: "Hello".to_string(),
-            examples: vec![],
-            messages: vec![Message {
-                author: "1".to_string(),
-                content: "How are you today?".to_string(),
-                citation_metadata: None,
+    let req = CountTokensRequest {
+        model: "models/gemini-2.5-flash-lite".to_string(),
+        contents: vec![Content {
+            parts: vec![Part {
+                data: Some(Data::Text("Hello, world!".to_string())),
+                ..Default::default()
             }],
-        }),
+            ..Default::default()
+        }],
+        ..Default::default()
     };
 
     dbg!(&req);
 
-    let resp = client.discuss_service.count_message_tokens(req).await;
+    let resp = client.generative_service.count_tokens(req).await;
 
     dbg!(&resp);
 
     assert!(resp.is_ok());
 
     let resp = resp.unwrap();
-    assert!(resp.get_ref().token_count > 0);
-}
-
-#[tokio::test]
-async fn it_generates_discussions() {
-    let mut client = test_client().await;
-
-    let req = GenerateMessageRequest {
-        model: "models/chat-bison-001".to_string(),
-        prompt: Some(MessagePrompt {
-            context: "Hello".to_string(),
-            examples: vec![],
-            messages: vec![Message {
-                author: "1".to_string(),
-                content: "How are you today?".to_string(),
-                citation_metadata: None,
-            }],
-        }),
-        temperature: None,
-        candidate_count: None,
-        top_p: None,
-        top_k: None,
-    };
-
-    dbg!(&req);
-
-    let resp = client.discuss_service.generate_message(req).await;
-
-    dbg!(&resp);
-
-    assert!(resp.is_ok());
-
-    let resp = resp.unwrap();
-
-    dbg!(resp);
+    assert!(resp.get_ref().total_tokens > 0);
 }
 
 #[tokio::test]
 async fn it_generates_text() {
     let mut client = test_client().await;
 
-    let req = GenerateTextRequest {
-        model: "models/text-bison-001".to_string(),
-        prompt: Some(TextPrompt {
-            text: "Hello my dear".to_string(),
+    let req = GenerateContentRequest {
+        model: "models/gemini-2.5-flash-lite".to_string(),
+        contents: vec![Content {
+            parts: vec![Part {
+                data: Some(Data::Text("Once upon a time,".to_string())),
+                ..Default::default()
+            }],
+            ..Default::default()
+        }],
+        generation_config: Some(GenerationConfig {
+            temperature: None,
+            ..Default::default()
         }),
-        temperature: None,
-        candidate_count: None,
-        max_output_tokens: None,
-        top_p: None,
-        top_k: None,
-        safety_settings: vec![],
-        stop_sequences: vec![],
+        ..Default::default()
     };
 
     dbg!(&req);
 
-    let resp = client.text_service.generate_text(req).await;
+    let resp = client.generative_service.generate_content(req).await;
 
     dbg!(&resp);
 
@@ -127,15 +95,22 @@ async fn it_generates_text() {
 async fn it_embeds_text() {
     let mut client = test_client().await;
 
-    let req = EmbedTextRequest {
-        model: "models/embedding-gecko-001".to_string(),
+    let req = EmbedContentRequest {
+        model: "models/text-embedding-004".to_string(),
 
-        text: "Je pense donc...".to_string(),
+        content: Some(Content {
+            parts: vec![Part {
+                data: Some(Data::Text("Je pense donc...".to_string())),
+                ..Default::default()
+            }],
+            ..Default::default()
+        }),
+        ..Default::default()
     };
 
     dbg!(&req);
 
-    let resp = client.text_service.embed_text(req).await;
+    let resp = client.generative_service.embed_content(req).await;
 
     dbg!(&resp);
 

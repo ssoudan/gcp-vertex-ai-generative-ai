@@ -3,7 +3,7 @@
 //! More examples in `gcp-vertex-ai-generative-language`.
 use std::env;
 
-use gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1beta2::ListModelsRequest;
+use gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1::ListModelsRequest;
 use gcp_vertex_ai_generative_language::{Credentials, LanguageClient};
 
 #[tokio::main]
