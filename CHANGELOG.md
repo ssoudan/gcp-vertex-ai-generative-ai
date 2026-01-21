@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Well not much at this point. It is the start.
 
-## 0.1.0 (2023-05-17)
+## 0.2.0 (2026-01-20)
+
+## 0.1.0 (2023-05-16)
 
 <csr-id-60280b48513450f846135475fd273f1fda9ef9e6/>
 
