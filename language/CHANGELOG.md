@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.2.0 (2026-01-20)
 
+<csr-id-e2b3b48aac6f15bc9ab0e6722b619e759e60cc67/>
+<csr-id-2ad42ecf1a290657cba8b5e5ebbdab306d7d02b2/>
+
 ### Chore
 
  - <csr-id-e2b3b48aac6f15bc9ab0e6722b619e759e60cc67/> update tonic requirement from 0.10 to 0.11
@@ -30,6 +33,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
      dependency-type: direct:production
    ...
 
+### Chore
+
+ - <csr-id-f2d31c8176a389c92c6c9b683d8813e82a89659e/> version
+
 ### New Features
 
  - <csr-id-856dabfae242c501ed6fc194045dd7c7680bb173/> api v1 - and tonic 0.14
@@ -38,8 +45,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <csr-read-only-do-not-edit/>
 
- - 6 commits contributed to the release.
- - 3 commits were understood as [conventional](https://www.conventionalcommits.org).
+ - 7 commits contributed to the release.
+ - 4 commits were understood as [conventional](https://www.conventionalcommits.org).
  - 0 issues like '(#ID)' were seen in commit messages
 
 ### Commit Details
@@ -49,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <details><summary>view details</summary>
 
  * **Uncategorized**
+    - Version ([`f2d31c8`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/f2d31c8176a389c92c6c9b683d8813e82a89659e))
     - Merge pull request #28 from ssoudan/feature/update ([`2f720f8`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/2f720f80c89ea88146ae641af7baffd6fecdb987))
     - Api v1 - and tonic 0.14 ([`856dabf`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/856dabfae242c501ed6fc194045dd7c7680bb173))
     - Merge pull request #12 from ssoudan/dependabot/cargo/tonic-build-0.11 ([`0e2302b`](https://github.com/ssoudan/gcp-vertex-ai-generative-ai/commit/0e2302bfbc47c20bb643677b0c8b53ffe9ce11ad))
