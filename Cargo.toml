@@ -1,6 +1,6 @@
 [package]
 name = "gcp-vertex-ai-generative-ai"
-version = "0.1.0"
+version = "0.2.0"
 description = "An async client library for GCP Vertex AI Generative models - Examples"
 repository.workspace = true
 license.workspace = true
@@ -13,13 +13,13 @@ exclude = ["BUILD.sh", ".devcontainer/", ".idea/", ".github/"]
 
 [dev-dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
-gcp-vertex-ai-generative-language = { path = "./language", version = "^0.1.1" }
+gcp-vertex-ai-generative-language = { path = "./language", version = "^0.2.0" }
 
 [workspace]
 members = ["language"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "An async client library for GCP Vertex AI Generative models."
 authors = ["Sebastien Soudan <sebastien.soudan@gmail.com>"]
