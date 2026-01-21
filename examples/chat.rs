@@ -46,7 +46,6 @@ async fn main() {
                     ..Default::default()
                 },],
                     role: "user".to_string(),
-        ..Default::default()
         }],
         ..Default::default()
     };
