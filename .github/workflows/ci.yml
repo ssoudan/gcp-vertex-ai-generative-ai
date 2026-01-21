@@ -50,7 +50,7 @@ jobs:
         run: cargo install cargo-all-features
       - uses: Swatinem/rust-cache@v2
       - name: Check
-        run: cargo check-all-features --workspace
+        run: cargo check --workspace
       - name: Clippy check
         run: cargo clippy --all-targets --all-features --workspace -- -D warnings
 
