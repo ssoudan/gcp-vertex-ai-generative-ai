@@ -5,3 +5,4 @@
 .vscode/
 .env
 Cargo.lock
+.direnv/

@@ -7,7 +7,7 @@
 ## Overview
 
 This is a Rust library to interact with the [Google Cloud Vertex AI Generative AI](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/overview) API.
-The service and the API are in beta. The implementation is ... very beta too. Let's see how it goes.
+The service and the API have reached v1 now. The implementation is still... very minimalist. Let's see how it goes.
 
 For now only *Generative Language* is there. See [language/](language/).  
 

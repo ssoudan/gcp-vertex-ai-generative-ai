@@ -2,14 +2,13 @@
 use std::io::Result;
 
 fn main() -> Result<()> {
-    tonic_build::configure()
+    tonic_prost_build::configure()
         .protoc_arg("--experimental_allow_proto3_optional")
         .build_server(false)
-        .compile(
+        .compile_protos(
             &[
-                "protos/google/ai/generativelanguage/v1beta2/discuss_service.proto",
-                "protos/google/ai/generativelanguage/v1beta2/model_service.proto",
-                "protos/google/ai/generativelanguage/v1beta2/text_service.proto",
+                "protos/google/ai/generativelanguage/v1/generative_service.proto",
+                "protos/google/ai/generativelanguage/v1/model_service.proto",
             ],
             &["protos/"],
         )?;

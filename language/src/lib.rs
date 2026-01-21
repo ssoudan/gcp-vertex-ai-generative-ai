@@ -6,9 +6,8 @@
 pub mod auth;
 
 pub use auth::Authentication;
-use google::ai::generativelanguage::v1beta2::discuss_service_client::DiscussServiceClient;
-use google::ai::generativelanguage::v1beta2::model_service_client::ModelServiceClient;
-use google::ai::generativelanguage::v1beta2::text_service_client::TextServiceClient;
+use google::ai::generativelanguage::v1::generative_service_client::GenerativeServiceClient;
+use google::ai::generativelanguage::v1::model_service_client::ModelServiceClient;
 use tonic::codegen::http::uri::InvalidUri;
 use tonic::transport::{Certificate, Channel, ClientTlsConfig};
 
@@ -43,6 +42,8 @@ pub mod google {
 
     /// google.api protos.
     pub mod api {
+        #![allow(clippy::doc_overindented_list_items)]
+        #![allow(clippy::doc_lazy_continuation)]
 
         include!(concat!(env!("OUT_DIR"), "/google.api.rs"));
     }
@@ -53,12 +54,14 @@ pub mod google {
         /// google.ai.generativelanguage protos.
         pub mod generativelanguage {
 
-            /// google.ai.generativelanguage.v1beta2 protos.
-            pub mod v1beta2 {
+            /// google.ai.generativelanguage.v1 protos.
+            pub mod v1 {
+                #![allow(clippy::doc_overindented_list_items)]
+                #![allow(clippy::doc_lazy_continuation)]
 
                 include!(concat!(
                     env!("OUT_DIR"),
-                    "/google.ai.generativelanguage.v1beta2.rs"
+                    "/google.ai.generativelanguage.v1.rs"
                 ));
             }
         }
@@ -68,10 +71,10 @@ pub mod google {
 /// Generative Language client.
 #[derive(Clone)]
 pub struct LanguageClient {
-    /// The Discuss service client. In particular, this client is used for
-    /// [`DiscussServiceClient::count_message_tokens`] and
-    /// [`DiscussServiceClient::generate_message`].
-    pub discuss_service: DiscussServiceClient<
+    /// The Generative service client. In particular, this client is used for
+    /// [`GenerativeServiceClient::count_tokens`] and
+    /// [`GenerativeServiceClient::generate_content`].
+    pub generative_service: GenerativeServiceClient<
         tonic::service::interceptor::InterceptedService<Channel, Authentication>,
     >,
     /// The Model service client. Notably, this client is used for
@@ -80,11 +83,6 @@ pub struct LanguageClient {
     pub model_service: ModelServiceClient<
         tonic::service::interceptor::InterceptedService<Channel, Authentication>,
     >,
-    /// The Text service client. Notably, this client is used for
-    /// [`TextServiceClient::generate_text`],
-    /// and [`TextServiceClient::embed_text`].
-    pub text_service:
-        TextServiceClient<tonic::service::interceptor::InterceptedService<Channel, Authentication>>,
 }
 
 impl LanguageClient {
@@ -126,9 +124,9 @@ impl LanguageClient {
         credentials: Credentials,
         channel: Channel,
     ) -> Result<LanguageClient, Error> {
-        let discuss_service = {
+        let generative_service = {
             let auth = Authentication::build(credentials.clone()).await?;
-            DiscussServiceClient::with_interceptor(channel.clone(), auth)
+            GenerativeServiceClient::with_interceptor(channel.clone(), auth)
         };
 
         let model_service = {
@@ -136,15 +134,9 @@ impl LanguageClient {
             ModelServiceClient::with_interceptor(channel.clone(), auth)
         };
 
-        let text_service = {
-            let auth = Authentication::build(credentials).await?;
-            TextServiceClient::with_interceptor(channel, auth)
-        };
-
         Ok(Self {
-            discuss_service,
+            generative_service,
             model_service,
-            text_service,
         })
     }
 }

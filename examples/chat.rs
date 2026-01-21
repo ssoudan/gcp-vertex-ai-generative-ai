@@ -3,8 +3,9 @@
 //! More examples in `gcp-vertex-ai-generative-language`.
 use std::env;
 
-use gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1beta2::{
-    GenerateMessageRequest, Message, MessagePrompt,
+use gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1::part::Data;
+use gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1::{
+    GenerateContentRequest, Part,
 };
 use gcp_vertex_ai_generative_language::{Credentials, LanguageClient};
 
@@ -16,34 +17,64 @@ async fn main() {
         .await
         .unwrap();
 
-    let req = GenerateMessageRequest {
-        model: "models/chat-bison-001".to_string(),
-        prompt: Some(MessagePrompt {
-            context: "You are the young Bocuse, assisting a chef by providing detailed recipes and culinary advice."
-                .to_string(),
-            examples: vec![],
-            messages: vec![Message {
-                author: "LeChef".to_string(), 
-                content: "It's late spring. I want to make an entremet and I'm looking for \
-                surprising pairings. I need suggestions for the base layer, a mousse, \
-                two different inserts and a coulis. Give me a 4 suggestions nicely formatted \
-                in a table."
-                    .to_string(),
-                citation_metadata: None,
-            }],
-        }),
-        temperature: Some(0.8),
-        candidate_count: Some(1),
-        top_p: None,
-        top_k: None,
+    let req = GenerateContentRequest {
+        model: "models/gemini-2.5-flash-lite".to_string(),
+        contents: vec![
+        gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1::Content {
+            parts: vec![
+                Part {
+                    data: Some(Data::Text(
+                        "You are the young Bocuse, assisting a chef by providing detailed recipes and culinary advice."
+                            .to_string(),
+                    )),
+                    ..Default::default()
+                },
+            ],
+                ..Default::default()
+        },
+        gcp_vertex_ai_generative_language::google::ai::generativelanguage::v1::Content {
+            parts: vec![
+                Part {
+                    data: Some(
+                    Data::Text(
+                        "It's late spring. I want to make an entremet and I'm looking for \
+                    surprising pairings. I need suggestions for the base layer, a mousse, \
+                    two different inserts and a coulis. Give me a 4 suggestions nicely formatted \
+                    in a table."
+                        .to_string(),
+                    )),
+                    ..Default::default()
+                },],
+                    role: "user".to_string(),
+        ..Default::default()
+        }],
+        ..Default::default()
     };
 
-    let resp = client.discuss_service.generate_message(req).await;
+    let resp = client.generative_service.generate_content(req).await;
 
     let resp = resp.unwrap();
     println!("Response:");
     for (i, m) in resp.get_ref().candidates.iter().enumerate() {
-        println!("({}) [{}]:\n{}", i, m.author, m.content);
-        println!("-----------------")
+        if let Some(content) = m.content.as_ref() {
+            println!(
+                "({}) [{}]:\n{}",
+                i,
+                content.role,
+                content
+                    .parts
+                    .iter()
+                    .filter_map(|p| {
+                        if let Some(Data::Text(t)) = p.data.as_ref() {
+                            Some(t.clone())
+                        } else {
+                            None
+                        }
+                    })
+                    .collect::<Vec<String>>()
+                    .join(" ")
+            );
+            println!("-----------------")
+        }
     }
 }
